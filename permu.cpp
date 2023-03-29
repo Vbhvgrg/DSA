@@ -1,0 +1,33 @@
+#include<iostream>
+using namespace std;
+
+void perm(char S[],int k){
+    static int A[10] = {0};
+    static char B[10];
+    int i;
+
+    if (S[k]=='\0')
+    {
+        B[k]='\0';
+        cout<<B<<endl;
+    }
+    else
+    {
+        for ( i = 0; S[i]!='\0'; i++)
+        {
+            if (A[i]==0)
+            {
+                B[k]=S[i];
+                A[i]=1;
+                perm(S,k+1);
+                A[i]=0;
+            }   
+        } 
+    }
+}
+
+int main(){
+    char S[]="ABC";
+    cout<<"All Possible Combination are "<<endl;
+    perm(S,0);
+}
